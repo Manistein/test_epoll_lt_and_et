@@ -1,5 +1,5 @@
 # 前言
-这是一个展示epoll水平触发(level trigger)和边缘触发(edge trigger)，在read和write两种情况下有什么表现的实验，目的是彻底搞清楚epoll的水平触发和边缘触发的运作。
+这是一个展示epoll水平触发(level trigger)和边缘触发(edge trigger)，分别在read和write两种情况下有什么表现的实验，目的是彻底搞清楚epoll的水平触发和边缘触发的运作。
 
 # 获取仓库
 在linux机器上，输入如下指令
