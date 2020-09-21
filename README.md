@@ -111,7 +111,7 @@ begin input
 end input
 before epoll_wait
 ```
-因为在循环程序中，每次在开始的时候，要进行输入操作，按下回车表示结束，这里直接跳过后两次输入，客户端epoll_wait被唤醒两次，将所有的直接都写完，这里说明了在lt模式下，只要发送缓存可写入，epoll_wait就会不断被唤醒，直至程序将数据包写完，我们在首次输入的时候，为socket fd添加了EPOLLOUT事件，因此在写完数据包的时候，也要将EPOLLOUT从该fd，在epoll实例中移除，避免没东西写的时候唤醒epoll_wait。当客户端以et的模式启动时，从客户端输入aabbccddeeffgghh，那么客户端的输出结果如下所示。
+因为在循环程序中，每次在开始的时候，要进行输入操作，按下回车表示结束，这里直接跳过后两次输入，客户端epoll_wait被唤醒两次，将所有的字节都写完，这里说明了在lt模式下，只要发送缓存可写入，epoll_wait就会不断被唤醒，直至程序将数据包写完，我们在首次输入的时候，为socket fd添加了EPOLLOUT事件，因此在写完数据包的时候，也要将EPOLLOUT从该fd，在epoll实例中移除，避免没东西写的时候唤醒epoll_wait。当客户端以et的模式启动时，从客户端输入aabbccddeeffgghh，那么客户端的输出结果如下所示。
 
 ```
 ubuntu@VM-46-92-ubuntu:~/lab/epolltest$ clear
